@@ -17,9 +17,6 @@ O banco de dados **Northwind** simula uma pequena empresa de importação/export
 
 ---
 
-Com essas tabelas, é possível realizar análises completas sobre vendas, desempenho de produtos, logística e muito mais!
-
-
 ## Contexto
 A **Northwind Traders** é uma empresa fictícia que atua no setor de importação/exportação. Você foi contratado pela diretoria para analisar o desempenho de vendas e identificar oportunidades de melhoria baseando-se nos dados do banco de dados **Northwind**.
 
