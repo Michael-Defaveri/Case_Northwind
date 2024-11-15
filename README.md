@@ -1,5 +1,25 @@
 # 📊 Case Northwind - Aumentando a Eficiência de Vendas
 
+## 🗃️ Sobre o Banco de Dados Northwind
+
+O banco de dados **Northwind** simula uma pequena empresa de importação/exportação. Ele é amplamente utilizado para aprendizado e demonstrações de práticas em bancos de dados relacionais.
+
+### 📋 Tabelas Principais
+
+- **Customers**: Informações dos clientes, incluindo nome, endereço e país.
+- **Orders**: Detalhes dos pedidos, como data, cliente, e remetente.
+- **Order Details**: Produtos específicos de cada pedido, com preços, quantidades e descontos aplicados.
+- **Products**: Lista de produtos disponíveis, com dados como nome, preço e fornecedor.
+- **Categories**: Categorias às quais os produtos pertencem.
+- **Suppliers**: Informações dos fornecedores, como nome, endereço e contato.
+- **Employees**: Dados dos funcionários, como nome, título e cidade.
+- **Shippers**: Empresas responsáveis pelas entregas, com informações de contato.
+
+---
+
+Com essas tabelas, é possível realizar análises completas sobre vendas, desempenho de produtos, logística e muito mais!
+
+
 ## Contexto
 A **Northwind Traders** é uma empresa fictícia que atua no setor de importação/exportação. Você foi contratado pela diretoria para analisar o desempenho de vendas e identificar oportunidades de melhoria baseando-se nos dados do banco de dados **Northwind**.
 
