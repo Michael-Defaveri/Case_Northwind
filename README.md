@@ -15,7 +15,7 @@ O banco de dados **Northwind** simula uma pequena empresa de importação/export
 - **Employees**: Dados dos funcionários, como nome, título e cidade.
 - **Shippers**: Empresas responsáveis pelas entregas, com informações de contato.
 
----
+
 
 ## Contexto
 A **Northwind Traders** é uma empresa fictícia que atua no setor de importação/exportação. Você foi contratado pela diretoria para analisar o desempenho de vendas e identificar oportunidades de melhoria baseando-se nos dados do banco de dados **Northwind**.
@@ -45,14 +45,14 @@ A **Northwind Traders** é uma empresa fictícia que atua no setor de importaç�
 - Os produtos com maior margem.
 - Os produtos com margens negativas ou muito baixas.
 
----
+
 
 ## 🔎 Consultas utilizadas para responder as questões levantadas pelo cliente
 
 Estas consultas cria uma estrutura de visões no banco de dados **Northwind**, organizando os dados em tabelas de fatos e dimensões. O objetivo é facilitar análises e consultas no modelo dimensional, permitindo um acesso mais eficiente às informações.
 
 
-## 🛠️ Script Completo
+
 
 ```sql
 -- Tabela com Detalhes dos Pedidos Vendidos
