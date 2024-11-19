@@ -88,7 +88,8 @@ ORDER BY
     o.order_date DESC;
 ```
 
-```-- Dimensão Clientes
+```sql
+-- Dimensão Clientes
 CREATE VIEW d_clientes AS	
 SELECT
     c.customer_id,
@@ -112,7 +113,8 @@ FROM
     suppliers s;
 ```
 
-```-- Dimensão Funcionários
+```sql
+-- Dimensão Funcionários
 CREATE VIEW d_funcionarios AS		
 SELECT
     e.employee_id,
@@ -123,7 +125,8 @@ FROM
     employees e;
 ```
 
-```-- Dimensão Categoria de Produto
+```sql
+-- Dimensão Categoria de Produto
 CREATE VIEW d_categoria_produto AS	
 SELECT
     c.category_id,
@@ -133,7 +136,8 @@ FROM
     categories c;
 ```
 
-```-- Dimensão Produtos
+```sql
+-- Dimensão Produtos
 CREATE VIEW d_produto AS	
 SELECT 
     p.product_id,
