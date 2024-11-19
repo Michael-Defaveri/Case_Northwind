@@ -40,6 +40,11 @@ A **Northwind Traders** é uma empresa fictícia que atua no setor de importaç�
 
 5. **Sugestão estratégica**:
    - Com base nas análises, sugerir **duas estratégias** para melhorar o desempenho da empresa.
+## 🚀 Desafio Extra
+
+Calcule a **margem de lucro por produto** com base no preço de venda e no custo do fornecedor (caso disponível). Identifique:
+- Os produtos com maior margem.
+- Os produtos com margens negativas ou muito baixas.
 
 ---
 
@@ -52,21 +57,4 @@ A **Northwind Traders** é uma empresa fictícia que atua no setor de importaç�
 - **Categories**: Categorias associadas aos produtos.
 - **Suppliers**: Informações sobre os fornecedores.
 - **Employees**: Detalhes sobre os funcionários.
-
----
-
-## 🛠️ Requisitos Técnicos
-
-1. Utilize o banco de dados **Northwind** para responder aos objetivos mencionados.
-2. Crie consultas SQL que atendam às perguntas levantadas.
-3. Use **JOINs** para conectar tabelas e extrair informações relevantes.
-4. (Opcional) Visualize os resultados em gráficos ou dashboards usando ferramentas como Excel, Power BI ou Python.
-
----
-
-## 🚀 Desafio Extra
-
-Calcule a **margem de lucro por produto** com base no preço de venda e no custo do fornecedor (caso disponível). Identifique:
-- Os produtos com maior margem.
-- Os produtos com margens negativas ou muito baixas.
 
