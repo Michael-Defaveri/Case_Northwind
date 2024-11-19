@@ -100,7 +100,8 @@ FROM
     customers c;
 ````
 
-```-- Dimensão Fornecedores
+```sql
+-- Dimensão Fornecedores
 CREATE VIEW d_fornecedores AS	
 SELECT
     ROW_NUMBER() OVER (ORDER BY supplier_id) AS sk_supplier,
