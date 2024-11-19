@@ -47,7 +47,7 @@ A **Northwind Traders** é uma empresa fictícia que atua no setor de importaç�
 
 ---
 
-## 🔎 Consultas utilizadas para responder as questões levantadas pelo client
+## 🔎 Consultas utilizadas para responder as questões levantadas pelo cliente
 
 Estas consultas cria uma estrutura de visões no banco de dados **Northwind**, organizando os dados em tabelas de fatos e dimensões. O objetivo é facilitar análises e consultas no modelo dimensional, permitindo um acesso mais eficiente às informações.
 
