@@ -47,13 +47,3 @@ A **Northwind Traders** é uma empresa fictícia que atua no setor de importaç�
 
 ---
 
-## 🗂️ Tabelas Relevantes no Banco de Dados
-
-- **Customers**: Informações sobre os clientes, incluindo país e cidade.
-- **Orders**: Detalhes dos pedidos realizados.
-- **Order Details**: Informações detalhadas de cada produto em um pedido, incluindo preço e quantidade.
-- **Products**: Lista de produtos com informações como nome, preço e fornecedor.
-- **Categories**: Categorias associadas aos produtos.
-- **Suppliers**: Informações sobre os fornecedores.
-- **Employees**: Detalhes sobre os funcionários.
-
