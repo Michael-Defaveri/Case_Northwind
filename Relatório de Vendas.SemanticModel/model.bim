@@ -13,6 +13,10 @@
       {
         "name": "PBI_ProTooling",
         "value": "[\"DevMode\"]"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"dcalendario\",\"d_clientes\",\"d_fornecedores\",\"d_funcionarios\",\"d_produto\",\"d_categoria_produto\",\"f_pedidos\"]"
       }
     ],
     "culture": "pt-BR",
@@ -26,6 +30,1134 @@
           },
           "contentType": "json"
         }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "queryGroups": [
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "0"
+          }
+        ],
+        "folder": "Fatos"
+      },
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "1"
+          }
+        ],
+        "folder": "Dimensões"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "AutoDetected_42aae6f0-929d-45b7-b6ee-6901867500d9",
+        "fromColumn": "sk_supplier",
+        "fromTable": "f_pedidos",
+        "toColumn": "sk_supplier",
+        "toTable": "d_fornecedores"
+      },
+      {
+        "name": "1d5a5037-e717-ee11-d799-2a3b02ded3fb",
+        "fromColumn": "sk_customer",
+        "fromTable": "f_pedidos",
+        "toColumn": "customer_id",
+        "toTable": "d_clientes"
+      },
+      {
+        "name": "ab8afef5-5e8d-946b-ade2-78d65ebab742",
+        "fromColumn": "sk_employee",
+        "fromTable": "f_pedidos",
+        "toColumn": "employee_id",
+        "toTable": "d_funcionarios"
+      },
+      {
+        "name": "2e6a7d5e-bafb-8d73-ca6a-a77857deea57",
+        "fromColumn": "sk_product",
+        "fromTable": "f_pedidos",
+        "toColumn": "product_id",
+        "toTable": "d_produto"
+      },
+      {
+        "name": "0a3465ef-b6a4-bda2-2d85-1c28035ebcae",
+        "fromColumn": "required_date",
+        "fromTable": "f_pedidos",
+        "toColumn": "data",
+        "toTable": "dcalendario"
+      },
+      {
+        "name": "AutoDetected_b497f993-e80f-4666-b6a4-af7c0eeb36ca",
+        "fromColumn": "category_id",
+        "fromTable": "d_produto",
+        "toColumn": "category_id",
+        "toTable": "d_categoria_produto"
+      }
+    ],
+    "sourceQueryCulture": "pt-BR",
+    "tables": [
+      {
+        "name": "d_clientes",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navegação"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "customer_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "30b7acac-2247-4269-a850-868fbe85bbc4",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "company_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8f866f86-3d83-4977-86b7-3d65ff9b284c",
+            "sourceColumn": "company_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1607f07a-d92d-4e08-9b3a-d2f720cac730",
+            "sourceColumn": "city",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9f53d409-5cc3-4785-9de9-8d4016768b3f",
+            "sourceColumn": "country",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "2929fd95-4d96-4f4d-99f2-e639b4f2f26e",
+        "partitions": [
+          {
+            "name": "d_clientes",
+            "mode": "import",
+            "queryGroup": "Dimensões",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = Odbc.DataSource(\"dsn=railway\", [HierarchicalNavigation=true]),",
+                "    railway_Database = Fonte{[Name=\"railway\",Kind=\"Database\"]}[Data],",
+                "    public_Schema = railway_Database{[Name=\"public\",Kind=\"Schema\"]}[Data],",
+                "    d_clientes_View = public_Schema{[Name=\"d_clientes\",Kind=\"View\"]}[Data]",
+                "in",
+                "    d_clientes_View"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "d_fornecedores",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navegação"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "sk_supplier",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "6d914d68-f646-456e-9076-3e92cbb12d3b",
+            "sourceColumn": "sk_supplier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "supplier_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "fb08fef0-7e39-46c5-9dba-d1be2072fa18",
+            "sourceColumn": "supplier_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "company_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "860c398a-5434-4c52-99ee-3578db06291a",
+            "sourceColumn": "company_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "contact_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "55b9cd87-bde6-4bda-8bef-6d7b5f1edba8",
+            "sourceColumn": "contact_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "235030fe-70dd-4dd3-89aa-a36cdbf10079",
+            "sourceColumn": "country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cb1123d5-f78e-424e-a2ce-c266337633ff",
+            "sourceColumn": "city",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "56f462bf-6a61-4d76-800e-3ee34b10cab1",
+        "partitions": [
+          {
+            "name": "d_fornecedores",
+            "mode": "import",
+            "queryGroup": "Dimensões",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = Odbc.DataSource(\"dsn=railway\", [HierarchicalNavigation=true]),",
+                "    railway_Database = Fonte{[Name=\"railway\",Kind=\"Database\"]}[Data],",
+                "    public_Schema = railway_Database{[Name=\"public\",Kind=\"Schema\"]}[Data],",
+                "    d_fornecedores_View = public_Schema{[Name=\"d_fornecedores\",Kind=\"View\"]}[Data]",
+                "in",
+                "    d_fornecedores_View"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "d_funcionarios",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navegação"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "employee_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "5bfa28ca-ed6b-4b91-9390-8cf6d5550d20",
+            "sourceColumn": "employee_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "first_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6c0e59d0-de08-41c5-ae8b-37b1232ca7bf",
+            "sourceColumn": "first_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "last_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "73325613-c4ff-4d74-ae0f-4200a5664650",
+            "sourceColumn": "last_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "full_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "769c498f-1fe2-45c0-84f2-7a1fc7d309b0",
+            "sourceColumn": "full_name",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "a4d43c47-4f28-4da7-8f13-044177db0ea1",
+        "partitions": [
+          {
+            "name": "d_funcionarios",
+            "mode": "import",
+            "queryGroup": "Dimensões",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = Odbc.DataSource(\"dsn=railway\", [HierarchicalNavigation=true]),",
+                "    railway_Database = Fonte{[Name=\"railway\",Kind=\"Database\"]}[Data],",
+                "    public_Schema = railway_Database{[Name=\"public\",Kind=\"Schema\"]}[Data],",
+                "    d_funcionarios_View = public_Schema{[Name=\"d_funcionarios\",Kind=\"View\"]}[Data]",
+                "in",
+                "    d_funcionarios_View"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "d_produto",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navegação"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "product_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "414dadfc-4961-4bd9-943a-2581477e32d9",
+            "sourceColumn": "product_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "efddda06-844c-45cb-a7dd-3ca03fc245e8",
+            "sourceColumn": "product_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "category_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "1d298179-87d2-4939-b8c9-9ee74428ea04",
+            "sourceColumn": "category_id",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "17630c20-985c-41d3-b94d-7e366dade8b4",
+        "partitions": [
+          {
+            "name": "d_produto",
+            "mode": "import",
+            "queryGroup": "Dimensões",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = Odbc.DataSource(\"dsn=railway\", [HierarchicalNavigation=true]),",
+                "    railway_Database = Fonte{[Name=\"railway\",Kind=\"Database\"]}[Data],",
+                "    public_Schema = railway_Database{[Name=\"public\",Kind=\"Schema\"]}[Data],",
+                "    d_produto_View = public_Schema{[Name=\"d_produto\",Kind=\"View\"]}[Data]",
+                "in",
+                "    d_produto_View"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "d_categoria_produto",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navegação"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "category_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4761442e-ac20-4145-88e3-17e63c653cc7",
+            "sourceColumn": "category_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "category_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3e014568-c874-43ef-b1b3-f00ce05622cd",
+            "sourceColumn": "category_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "description",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4ae4ab88-9614-4f78-872e-0ff7a90d71ec",
+            "sourceColumn": "description",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "63fa7daa-4eeb-4c8f-bfc7-58c6c3f98326",
+        "partitions": [
+          {
+            "name": "d_categoria_produto",
+            "mode": "import",
+            "queryGroup": "Dimensões",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = Odbc.DataSource(\"dsn=railway\", [HierarchicalNavigation=true]),",
+                "    railway_Database = Fonte{[Name=\"railway\",Kind=\"Database\"]}[Data],",
+                "    public_Schema = railway_Database{[Name=\"public\",Kind=\"Schema\"]}[Data],",
+                "    d_categoria_produto_View = public_Schema{[Name=\"d_categoria_produto\",Kind=\"View\"]}[Data]",
+                "in",
+                "    d_categoria_produto_View"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "f_pedidos",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navegação"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "order_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "0dd03724-7ab5-4e5e-924f-9b8cb20a57c5",
+            "sourceColumn": "order_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "required_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "b7fe6bfb-a450-4158-b797-05f25e3d6142",
+            "sourceColumn": "required_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "shipped_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "7d32ace5-4aef-4e69-8c4f-fcc39c6994ad",
+            "sourceColumn": "shipped_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "81a60fd2-4645-4642-8c69-c1fcc9c449f9",
+            "sourceColumn": "order_id",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "sk_product",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4b259cb8-0bf6-4294-b1fe-a840b0e3922b",
+            "sourceColumn": "sk_product",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sk_supplier",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "9ee1265a-db7b-4a80-8af1-036bf4015c80",
+            "sourceColumn": "sk_supplier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sk_employee",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "2a71bc47-6f6d-4a3e-ab18-35dc8137f008",
+            "sourceColumn": "sk_employee",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sk_customer",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "31296a98-f7f2-409f-8682-3b26d89989e6",
+            "sourceColumn": "sk_customer",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "unit_price",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "5cc8f543-f5ba-4075-ac47-7db12816ea5c",
+            "sourceColumn": "unit_price",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "quantity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "336cf9ac-b0d7-4570-a783-e666b5809ad1",
+            "sourceColumn": "quantity",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "discount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "1d1005cf-fb07-4389-8881-7a57bf361886",
+            "sourceColumn": "discount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "valor_venda",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "9670e8ee-70b5-43ad-a52a-0e4588151251",
+            "sourceColumn": "valor_venda",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "valor_desconto",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "efbd7ae8-4975-4db5-83a3-f560e8589132",
+            "sourceColumn": "valor_desconto",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "04871c53-4db7-44eb-b38d-4a10bf233b7f",
+        "partitions": [
+          {
+            "name": "f_pedidos",
+            "mode": "import",
+            "queryGroup": "Fatos",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = Odbc.DataSource(\"dsn=railway\", [HierarchicalNavigation=true]),",
+                "    railway_Database = Fonte{[Name=\"railway\",Kind=\"Database\"]}[Data],",
+                "    public_Schema = railway_Database{[Name=\"public\",Kind=\"Schema\"]}[Data],",
+                "    f_pedidos_View = public_Schema{[Name=\"f_pedidos\",Kind=\"View\"]}[Data]",
+                "in",
+                "    f_pedidos_View"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dcalendario",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navegação"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "data",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "c1f93a1f-a21d-4c5a-bcae-9891a96173d0",
+            "sourceColumn": "data",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "hoje",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "391d71ff-9c85-4e6c-828a-e372a893fbf6",
+            "sourceColumn": "hoje",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "qtde_dias",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "a34f31b2-6928-4c22-a30f-ad3e13824ab5",
+            "sourceColumn": "qtde_dias",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dia_semana",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "4f4a6130-c1c8-4f88-94d8-709ab61a1c51",
+            "sourceColumn": "dia_semana",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dia_mes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "b7064f1a-dc47-48bd-bb1b-6f9d8d63bc1e",
+            "sourceColumn": "dia_mes",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dia_ano",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "e402a6e6-4860-4c07-8a8f-dc7cd0729e5d",
+            "sourceColumn": "dia_ano",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ano",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "ae7c3ebf-ba4a-4768-92b8-6cc762fdccfb",
+            "sourceColumn": "ano",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "15b3fcbb-04ff-4729-a076-a6f08c4a458a",
+            "sourceColumn": "mes",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "semana_mes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "84edf9c6-d6da-4133-955e-f0748236f910",
+            "sourceColumn": "semana_mes",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "semana_ano",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "296ac1ab-48d1-49e0-9ceb-29ed1c30e1c1",
+            "sourceColumn": "semana_ano",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "trimestre",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "5f164ba4-166d-4daa-a24f-33459d6188c1",
+            "sourceColumn": "trimestre",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "trimestre_format",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "68039b85-c0b8-4444-b2a3-2652ab8c753c",
+            "sourceColumn": "trimestre_format",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "tri_ano",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "47b95c2d-a67a-44b9-91d6-3bc5d77b2f56",
+            "sourceColumn": "tri_ano",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "periodo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b6ff2de7-3856-4d1e-97f0-2ecd2162e3b5",
+            "sourceColumn": "periodo",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "contador_mesano",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "b889e678-7114-4783-9871-38e434a20984",
+            "sourceColumn": "contador_mesano",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "contador_triano",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "7111652f-705f-495e-9970-752494b2409c",
+            "sourceColumn": "contador_triano",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "nome_dia_semana",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0a83c589-e142-4c13-8fa7-7cf5fbd8e6f3",
+            "sourceColumn": "nome_dia_semana",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "nome_dia_semana_us",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5b64e32f-4dcd-478d-b1c0-8a4e303f43fc",
+            "sourceColumn": "nome_dia_semana_us",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dia_util",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dc0ef447-1aa5-411a-a2ea-e58e69fd99c6",
+            "sourceColumn": "dia_util",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mes_nome",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "fb19a9ae-7c27-41de-bfc5-a937b605da47",
+            "sourceColumn": "mes_nome",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mes_nome_us",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "da547d16-4f08-4fa3-8bf5-ebbdd349baa8",
+            "sourceColumn": "mes_nome_us",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mes_ano",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d18b3837-812f-4747-9453-59689983ebd4",
+            "sourceColumn": "mes_ano",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mes_ano_us",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5be65212-7985-475d-b4f1-fe04b76adf75",
+            "sourceColumn": "mes_ano_us",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mes_abv",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bfba6fe2-5bee-454c-8d33-b758dc909b20",
+            "sourceColumn": "mes_abv",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "16db5045-835e-4107-956f-4fdebac8ac1a",
+        "partitions": [
+          {
+            "name": "dcalendario",
+            "mode": "import",
+            "queryGroup": "Dimensões",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = PowerPlatform.Dataflows(null),",
+                "    Workspaces = Fonte{[Id=\"Workspaces\"]}[Data],",
+                "    #\"22ba7bcd-c778-4f5b-ad90-cc079424990f\" = Workspaces{[workspaceId=\"22ba7bcd-c778-4f5b-ad90-cc079424990f\"]}[Data],",
+                "    #\"cc47d566-dc77-465f-aa23-490fe7c92fa9\" = #\"22ba7bcd-c778-4f5b-ad90-cc079424990f\"{[dataflowId=\"cc47d566-dc77-465f-aa23-490fe7c92fa9\"]}[Data],",
+                "    dcalendario_ = #\"cc47d566-dc77-465f-aa23-490fe7c92fa9\"{[entity=\"dcalendario\",version=\"\"]}[Data]",
+                "in",
+                "    dcalendario_"
+              ],
+              "type": "m"
+            }
+          }
+        ]
       }
     ]
   }

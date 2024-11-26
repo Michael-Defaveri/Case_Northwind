@@ -7,10 +7,102 @@
         "x": 0,
         "y": 0
       },
-      "nodes": [],
+      "nodes": [
+        {
+          "location": {
+            "x": 1007.0134993924901,
+            "y": 0
+          },
+          "nodeIndex": "d_categoria_produto",
+          "nodeLineageTag": "63fa7daa-4eeb-4c8f-bfc7-58c6c3f98326",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 176.77357287165998,
+            "y": 0
+          },
+          "nodeIndex": "d_clientes",
+          "nodeLineageTag": "2929fd95-4d96-4f4d-99f2-e639b4f2f26e",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 143.06464666569639,
+            "y": 846.12968588008039
+          },
+          "nodeIndex": "d_fornecedores",
+          "nodeLineageTag": "56f462bf-6a61-4d76-800e-3ee34b10cab1",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 537.86130046830078,
+            "y": 858.04700539951807
+          },
+          "nodeIndex": "d_funcionarios",
+          "nodeLineageTag": "a4d43c47-4f28-4da7-8f13-044177db0ea1",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 577.42312850923315,
+            "y": 0
+          },
+          "nodeIndex": "d_produto",
+          "nodeLineageTag": "17630c20-985c-41d3-b94d-7e366dade8b4",
+          "size": {
+            "height": 167.72439839812583,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 574.09611003310238,
+            "y": 357.10285957277625
+          },
+          "nodeIndex": "f_pedidos",
+          "nodeLineageTag": "04871c53-4db7-44eb-b38d-4a10bf233b7f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 980.53951127116693,
+            "y": 826.05912367583926
+          },
+          "nodeIndex": "dcalendario",
+          "nodeLineageTag": "16db5045-835e-4107-956f-4fdebac8ac1a",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 5
+        }
+      ],
       "name": "Todas as tabelas",
-      "zoomValue": 100,
-      "pinKeyFieldsToTop": false,
+      "zoomValue": 50.346892102823091,
+      "pinKeyFieldsToTop": true,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
       "tablesLocked": false
